@@ -11,31 +11,25 @@ def get_response(city_name):
 
     return requests.get(url, params=params)
 
-def parse_json(response):
-    data = response.json()
+def get_current(response):
+    current = response.json()["current"]
 
-    current = data["current"]
-
-    temp = current["temp_c"]
-    humidity = current["humidity"]
-    wind = current["wind_kph"]
-
-    print(f"Temperature: {temp}C")
-    print(f"Humidity: {humidity}%")
-    print(f"Wind: {wind}km/h")
+    print(f"Temperature: {current["temp_c"]}C")
+    print(f"Humidity: {current["humidity"]}%")
+    print(f"Wind: {current["wind_kph"]}km/h")
 
 def main():
-    city_name = input("Enter name of city to forecast >> ")
+    # city_name = input("Enter name of city to forecast >> ")
 
-    response = get_response(city_name)
+    response = get_response("Rochester")
 
     if (response.status_code != 200):
         print("Error fetching weather data")
         exit()
 
-    print(response.text)
+    print("\n", response.text, "\n")
 
-    parse_json(response)
+    get_current(response)
 
 if __name__ == "__main__":
     main()
