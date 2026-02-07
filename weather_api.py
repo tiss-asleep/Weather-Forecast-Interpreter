@@ -38,7 +38,7 @@ def get_current(city_name, unit="C"):
     }
     
     try:
-        response = requests.get(CURRENT_URL, params=params)
+        response = requests.get(CURRENT_URL, params=params, timeout=10)
         response.raise_for_status()
         data = response.json()
     except requests.exceptions.RequestException as e:
