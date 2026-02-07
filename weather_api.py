@@ -15,10 +15,12 @@ def get_current(city_name):
         "q": city_name
     }
 
-    response = requests.get(CURRENT_URL, params=params)
-    if response.status_code != 200:
-        print("Error fetching current weather data")
-        return
+    try:
+        response = requests.get(CURRENT_URL, params=params, timeout=10)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching current weather data: {e}")
+        return None
     
     current = response.json()["current"]
 
@@ -33,10 +35,12 @@ def get_forecast(city_name, days=3):
         "days": days
     }
 
-    response = requests.get(FORECAST_URL, params=params)
-    if response.status_code != 200:
-        print("Error fetching forecast data")
-        return
+    try:
+        response = requests.get(FORECAST_URL, params=params, timeout=10)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching forecast data: {e}")
+        return None
 
     forecast_days = response.json()["forecast"]["forecastday"]
 
