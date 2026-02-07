@@ -1,3 +1,13 @@
+"""
+@file: weather_api.py
+@author: Jambaldorj Munkhsoyol
+
+This module provides functions to interact with a weather API to fetch current weather and
+forecast data. It retrieves the API key from environment variables, defines functions
+to get current weather and forecast data, and handles errors gracefully. The functions
+return structured data that can be easily used by other parts of the application.
+"""
+
 import os
 import requests
 
@@ -9,6 +19,12 @@ if not API_KEY:
 CURRENT_URL = "https://api.weatherapi.com/v1/current.json"
 FORECAST_URL = "https://api.weatherapi.com/v1/forecast.json"
 
+"""
+Fetches current weather data for a given city and unit of temperature.
+@param city_name: The name of the city to fetch weather for.
+@param unit: The unit of temperature ("C" for Celsius, "F" for Fahrenheit).
+@return: A dictionary containing current weather data or None if an error occurs.
+"""
 def get_current(city_name, unit="C"):
     params = {
         "key": API_KEY,
@@ -42,6 +58,13 @@ def get_current(city_name, unit="C"):
         "condition": current["condition"]["text"]
     }
 
+"""
+Fetches weather forecast data for a given city, number of days, and unit of temperature.
+@param city_name: The name of the city to fetch forecast for.
+@param days: The number of days to forecast (1-10).
+@param unit: The unit of temperature ("C" for Celsius, "F" for Fahrenheit).
+@return: A list of dictionaries containing forecast data for each day or None if an error occurs.
+"""
 def get_forecast(city_name, days=3, unit="C"):
     params = {
         "key": API_KEY,
