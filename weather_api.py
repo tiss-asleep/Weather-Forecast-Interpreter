@@ -23,6 +23,9 @@ def get_current(city_name, unit="C"):
         return None
     
     current = response.json()["current"]
+    if not current:
+        print("No current weather data found")
+        return None
 
     if unit == "C":
         temp = current["temp_c"]
@@ -54,6 +57,9 @@ def get_forecast(city_name, days=3, unit="C"):
         return None
 
     forecast_days = response.json()["forecast"]["forecastday"]
+    if not forecast_days:
+        print("No forecast data found.")
+        return None
 
     result = []
 
