@@ -11,13 +11,19 @@ to generate the summary based on the provided weather data.
 import os
 from google import genai
 
-API_KEY = os.getenv("GEMINI_API_KEY")
-
-if not API_KEY:
-    raise RuntimeError("GEMINI_API_KEY is not set")
-
-CLIENT = genai.Client(api_key=API_KEY)
 MODEL_NAME = "gemini-2.5-flash-lite"
+
+"""
+Retrieves the Gemini API key from environment variables.
+@return: The Gemini API key as a string.
+@raises RuntimeError: If the GEMINI_API_KEY environment variable is not set."""
+def _get_api_key():
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        raise RuntimeError("GEMINI_API_KEY is not set")
+    return api_key
+
+CLIENT = genai.Client(api_key=_get_api_key())
 
 """
 Generates a user-friendly summary of raw weather data using Gemini API.

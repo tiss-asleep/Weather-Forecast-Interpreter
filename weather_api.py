@@ -11,13 +11,18 @@ return structured data that can be easily used by other parts of the application
 import os
 import requests
 
-API_KEY = os.getenv("WEATHER_API_KEY")
-
-if not API_KEY:
-    raise RuntimeError("WEATHER_API_KEY is not set")
-
 CURRENT_URL = "https://api.weatherapi.com/v1/current.json"
 FORECAST_URL = "https://api.weatherapi.com/v1/forecast.json"
+
+"""
+Retrieves the weather API key from environment variables.
+@return: The weather API key as a string.
+@raises RuntimeError: If the WEATHER_API_KEY environment variable is not set."""
+def _get_api_key():
+    api_key = os.getenv("WEATHER_API_KEY")
+    if not api_key:
+        raise RuntimeError("WEATHER_API_KEY is not set")
+    return api_key
 
 """
 Fetches current weather data for a given city and unit of temperature.
@@ -27,7 +32,7 @@ Fetches current weather data for a given city and unit of temperature.
 """
 def get_current(city_name, unit="C"):
     params = {
-        "key": API_KEY,
+        "key": _get_api_key(),
         "q": city_name
     }
 
@@ -67,7 +72,7 @@ Fetches weather forecast data for a given city, number of days, and unit of temp
 """
 def get_forecast(city_name, days=3, unit="C"):
     params = {
-        "key": API_KEY,
+        "key": _get_api_key(),
         "q": city_name,
         "days": days
     }
