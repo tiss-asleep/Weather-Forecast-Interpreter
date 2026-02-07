@@ -23,12 +23,7 @@ def _get_api_key():
         raise RuntimeError("GEMINI_API_KEY is not set")
     return api_key
 
-"""
-Initializes and returns a Gemini client using the retrieved API key.
-@return: A Gemini client instance.
-"""
-def _get_client():
-    return genai.Client(api_key=_get_api_key())
+CLIENT = genai.Client(api_key=_get_api_key())
 
 """
 Generates a user-friendly summary of the provided weather data using the Gemini API.
@@ -47,7 +42,7 @@ def get_gemini_response(weather_data):
     """
 
     try:
-        response = _get_client().models.generate_content(
+        response = CLIENT.models.generate_content(
             model=MODEL_NAME,
             contents=prompt
         )
