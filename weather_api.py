@@ -58,7 +58,7 @@ def get_forecast(city_name, days=3, unit="C"):
 
     forecast_days = response.json()["forecast"]["forecastday"]
     if not forecast_days:
-        print("No forecast data found.")
+        print("No forecast data found")
         return None
 
     result = []
