@@ -3,6 +3,8 @@ from google import genai
 
 API_KEY = os.getenv("GEMINI_API_KEY")
 
+MODEL_NAME = "gemini-2.5-flash-lite"
+
 if not API_KEY:
     raise RuntimeError("GEMINI_API_KEY is not set")
 
@@ -16,6 +18,6 @@ def get_gemini_response(weather_data):
     """
 
     return CLIENT.models.generate_content(
-        model="gemini-1.5-flash",
+        model=MODEL_NAME,
         contents=prompt
     ).text
