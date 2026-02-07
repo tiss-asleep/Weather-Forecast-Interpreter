@@ -17,21 +17,11 @@ and prints the summary. If any errors occur during the process, it catches the e
 """
 def main():
     city = input("Enter city name >> ").strip()
-    unit = input("Enter unit of temperature (C or F) >> ").upper().strip()
+    unit = input("Enter unit of temperature (C or F) >> ").strip()
     try:
-        days = int(input("Enter number of days to forecast (1-10) >> "))
+        days = int(input("Enter number of days to forecast (1-10) >> ").strip())
     except ValueError:
-        print("Error: Days must be an integer")
-        return
-    
-    if not city:
-        print("Error: City is required")
-        return
-    if unit not in ("C", "F"):
-        print("Error: Unit must be C or F")
-        return
-    if not (1 <= days <= 10):
-        print("Error: Days must be between 1 and 10")
+        print("Days must be an integer between 1 and 10")
         return
 
     try:
@@ -44,8 +34,12 @@ def main():
         }
         
         print(f"\n{get_gemini_response(weather_data)}")
-    except Exception as e:
+    except ValueError as e:
+        print(f"Input error: {e}")
+    except RuntimeError as e:
         print(f"Error: {e}")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
 
 if __name__ == "__main__":
     main()

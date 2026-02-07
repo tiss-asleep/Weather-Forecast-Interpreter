@@ -21,18 +21,11 @@ returns an appropriate error message and status code.
 @app.route("/weather")
 def weather():
     city = request.args.get("city", "").strip()
-    unit = request.args.get("unit", "C").upper().strip()
+    unit = request.args.get("unit", "").strip()
     try:
-        days = int(request.args.get("days", 3))
-    except (ValueError, TypeError):
-        return jsonify({"error": "Days must be an integer"}), 400
-    
-    if not city:
-        return jsonify({"error": "City is required"}), 400
-    if unit not in ("C", "F"):
-        return jsonify({"error": "Unit must be C or F"}), 400
-    if not (1 <= days <= 10):
-        return jsonify({"error": "Days must be between 1 and 10"}), 400
+        days = int(request.args.get("days", "").strip())
+    except ValueError:
+        return jsonify({"error": "Days must be an integer between 1 and 10"}), 400
     
     try:
         current = get_current(city, unit)
@@ -49,6 +42,10 @@ def weather():
             "weather_data": weather_data,
             "summary": summary
         })
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    except RuntimeError as e:
+        return jsonify({"error": str(e)}), 500
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
