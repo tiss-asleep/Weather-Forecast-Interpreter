@@ -1,6 +1,11 @@
+import os
 import requests
 
-API_KEY = "7eddd10bc7244779ae104325260702"
+API_KEY = os.getenv("WEATHER_API_KEY")
+
+if not API_KEY:
+    raise RuntimeError("WEATHER_API_KEY is not set")
+
 CURRENT_URL = "https://api.weatherapi.com/v1/current.json"
 FORECAST_URL = "https://api.weatherapi.com/v1/forecast.json"
 
