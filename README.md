@@ -1,2 +1,2 @@
 # Weather Forecast Interpreter
-A weather forecast system that uses AI to interpret the raw weather data to produce readable output.
+A weather forecast system that uses AI to interpret raw weather data to produce user-friendly output.
