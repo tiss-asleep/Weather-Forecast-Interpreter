@@ -29,9 +29,13 @@ CLIENT = genai.Client(api_key=_get_api_key())
 Generates a user-friendly summary of the provided weather data using the Gemini API.
 @param weather_data: A dictionary containing raw weather data (current and forecast).
 @return: A string containing the generated summary.
+@raises ValueError: If the input weather data is empty.
 @raises RuntimeError: If there is an error generating the summary.
 """
 def get_gemini_response(weather_data):
+    if not weather_data:
+        raise ValueError("Weather data cannot be empty")
+
     prompt = f"""
     Raw weather data is provided below:
     {weather_data}

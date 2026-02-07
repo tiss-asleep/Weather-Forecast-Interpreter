@@ -29,9 +29,15 @@ Fetches current weather data for a given city and unit of temperature.
 @param city_name: The name of the city to fetch weather for.
 @param unit: The unit of temperature ("C" for Celsius, "F" for Fahrenheit).
 @return: A dictionary containing current weather data.
+@raises ValueError: If the input parameters are invalid.
 @raises RuntimeError: If there is an error fetching the data or if no data is found
 """
 def get_current(city_name, unit="C"):
+    if not city_name:
+        raise ValueError("City name cannot be empty")
+    if unit not in ("C", "F"):
+        raise ValueError("Unit must be C or F")
+
     params = {
         "key": _get_api_key(),
         "q": city_name
@@ -61,9 +67,17 @@ Fetches weather forecast data for a given city, number of days, and unit of temp
 @param days: The number of days to forecast (1-10).
 @param unit: The unit of temperature ("C" for Celsius, "F" for Fahrenheit).
 @return: A list of dictionaries containing forecast data for each day.
+@raises ValueError: If the input parameters are invalid.
 @raises RuntimeError: If there is an error fetching the data or if no data is found
 """
 def get_forecast(city_name, days=3, unit="C"):
+    if not city_name:
+        raise ValueError("City name cannot be empty")
+    if not (1 <= days <= 10):
+        raise ValueError("Days must be between 1 and 10")
+    if unit not in ("C", "F"):
+        raise ValueError("Unit must be C or F")
+
     params = {
         "key": _get_api_key(),
         "q": city_name,
