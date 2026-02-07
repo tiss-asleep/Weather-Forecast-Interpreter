@@ -36,10 +36,10 @@ def get_forecast(city_name, days=3):
     forecast_days = response.json()["forecast"]["forecastday"]
 
     for day in forecast_days:
-        print(f"\nForecasted date: {day["date"]}")
-        print(f"Minimun temperature: {day["day"]["mintemp_c"]}C")
-        print(f"Maximum temperature: {day["day"]["maxtemp_c"]}C")
-        print(f"Condition: {day["day"]["condition"]["text"]}, Chance of rain: {day["day"]["daily_chance_of_rain"]}%")
+        print(f"\nForecasted date: {day['date']}")
+        print(f"Minimum temperature: {day['day']['mintemp_c']}C")
+        print(f"Maximum temperature: {day['day']['maxtemp_c']}C")
+        print(f"Condition: {day['day']['condition']['text']}, Chance of rain: {day['day']['daily_chance_of_rain']}%")
 
 def main():
     city_name = input("Enter city name >> ")
