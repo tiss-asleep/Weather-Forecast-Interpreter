@@ -5,6 +5,15 @@ API_KEY = "7eddd10bc7244779ae104325260702"
 def get_city_name():
     return input("Enter name of city to forecast >> ")
 
+def get_response(city_name):
+    url = "https://api.weatherapi.com/v1/current.json"
+    params = {
+        "key": API_KEY,
+        "q": city_name
+    }
+
+    response = requests.get(url, params=params)
+
 def parse_json(response):
     data = response.json()
 
@@ -21,13 +30,7 @@ def parse_json(response):
 def main():
     city_name = get_city_name()
 
-    url = "https://api.weatherapi.com/v1/current.json"
-    params = {
-        "key": API_KEY,
-        "q": city_name
-    }
-
-    response = requests.get(url, params=params)
+    response = get_response(city_name)
 
     print(response.status_code)
     print(response.text)
