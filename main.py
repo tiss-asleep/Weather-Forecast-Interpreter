@@ -2,9 +2,6 @@ import requests
 
 API_KEY = "7eddd10bc7244779ae104325260702"
 
-def get_city_name():
-    return input("Enter name of city to forecast >> ")
-
 def get_response(city_name):
     url = "https://api.weatherapi.com/v1/current.json"
     params = {
@@ -28,11 +25,14 @@ def parse_json(response):
     print(f"Wind: {wind}km/h")
 
 def main():
-    city_name = get_city_name()
+    city_name = input("Enter name of city to forecast >> ")
 
     response = get_response(city_name)
 
-    print(response.status_code)
+    if (response.status_code != 200):
+        print("Error fetching weather data")
+        exit()
+
     print(response.text)
 
     parse_json(response)
