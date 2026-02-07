@@ -32,10 +32,10 @@ Fetches current weather data for a given city and unit of temperature.
 @raises ValueError: If the input parameters are invalid.
 @raises RuntimeError: If there is an error fetching the data or if no data is found
 """
-def get_current(city_name, unit="C"):
+def get_current(city_name, unit):
     if not city_name:
         raise ValueError("City name cannot be empty")
-    if unit not in ("C", "F"):
+    if unit.upper() not in ("C", "F"):
         raise ValueError("Unit must be C or F")
 
     params = {
@@ -70,12 +70,12 @@ Fetches weather forecast data for a given city, number of days, and unit of temp
 @raises ValueError: If the input parameters are invalid.
 @raises RuntimeError: If there is an error fetching the data or if no data is found
 """
-def get_forecast(city_name, days=3, unit="C"):
+def get_forecast(city_name, days, unit):
     if not city_name:
         raise ValueError("City name cannot be empty")
     if not (1 <= days <= 10):
         raise ValueError("Days must be between 1 and 10")
-    if unit not in ("C", "F"):
+    if unit.upper() not in ("C", "F"):
         raise ValueError("Unit must be C or F")
 
     params = {
