@@ -27,7 +27,7 @@ def main():
     forecast = get_forecast(city, days, unit)
 
     if not current or not forecast:
-        print("Failed to fetch weather data")
+        print("Error fetching weather data")
         return
     
     weather_data = {

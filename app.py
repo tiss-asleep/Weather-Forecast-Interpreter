@@ -17,7 +17,7 @@ def weather():
     forecast = get_forecast(city, days, unit)
 
     if not current or not forecast:
-        return jsonify({"error": "Failed to fetch weather data"}), 500
+        return jsonify({"error": "Error fetching weather data"}), 500
     
     weather_data = {
         "current": current,
