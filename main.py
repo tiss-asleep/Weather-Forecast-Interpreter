@@ -12,7 +12,7 @@ def get_response(city_name):
         "q": city_name
     }
 
-    response = requests.get(url, params=params)
+    return requests.get(url, params=params)
 
 def parse_json(response):
     data = response.json()
