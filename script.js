@@ -45,7 +45,7 @@ async function getWeather() {
         
         displayWeather(data, city, unit);
     } catch (error) {
-        displayError('Could not fetch weather data. Please try again later.');
+        displayError('Not connected to the server.');
     } finally {
         GET_WEATHER_BUTTON.disabled = false;
     }
