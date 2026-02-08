@@ -82,7 +82,7 @@ function displayWeather(data, city, unit) {
         html += `
             <div class="forecast-day">
                 <p class="date">${formatDate(day.date)}</p>
-                <p class="temps">H:${day.min_temp} L:${day.max_temp}${unit}</p>
+                <p class="temps">L:${day.min_temp} H:${day.max_temp}${unit}</p>
                 <p class="condition">${day.condition}</p>
                 <p class="rain">Rain: ${day.chance_of_rain}%</p>
             </div>
@@ -121,12 +121,12 @@ function displayError(message) {
  * @returns The formatted date string in the format "Mon DD".
  */
 function formatDate(dateStr) {
-    const date = new Date(dateStr);
-    const options = {
+    const [year, month, day] = dateStr.split('-');
+    const date = new Date(Number(year), Number(month) - 1, Number(day));
+    return date.toLocaleDateString('en-US', {
         month: 'short',
         day: 'numeric'
-    };
-    return date.toLocaleDateString('en-US', options);
+    });
 }
 
 // Event listener for the "Get Weather" button to trigger the weather fetching process when clicked.
