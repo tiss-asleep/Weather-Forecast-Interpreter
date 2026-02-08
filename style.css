@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Background */
+body {
+    background-color: rgb(218, 218, 218);
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Main container */
+.container {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgb(97, 97, 97);
+}
+
+/* Title */
+.container h1 {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* Form layout */
+.weather-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input,
+select {
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid rgb(177, 177, 177);
+    border-radius: 4px;
+}
+
+/* Button */
+#getWeatherButton {
+    padding: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(71, 122, 184);
+    color: white;
+    cursor: pointer;
+}
+
+#getWeatherButton:disabled {
+    background-color: rgb(177, 177, 177);
+    cursor: not-allowed;
+}
+
+/* Output area */
+#output {
+    margin-top: 20px;
+}
+
+/* Weather result box */
+.weather-result {
+    border-top: 1px solid rgb(177, 177, 177);
+    padding-top: 16px;
+}
+
+/* Sections */
+.current-weather,
+.forecast,
+.ai-summary {
+    margin-top: 16px;
+}
+
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+}
+
+/* Forecast day card */
+.forecast-day {
+    padding: 10px;
+    border: 1px solid rgb(177, 177, 177);
+    border-radius: 4px;
+    text-align: center;
+    background-color: rgb(245, 245, 245);
+}
+
+/* Loading */
+.loading {
+    text-align: center;
+    font-style: italic;
+}
+
+/* Error */
+.error {
+    padding: 12px;
+    border-radius: 4px;
+    background-color: rgb(254, 199, 208);
+    color: rgb(162, 63, 63);
+}
