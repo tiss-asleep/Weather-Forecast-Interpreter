@@ -82,8 +82,8 @@ function displayWeather(data, city, unit) {
         html += `
             <div class="forecast-day">
                 <p class="date">${formatDate(day.date)}</p>
+                <p class="temps">H:${day.min_temp} L:${day.max_temp}${unit}</p>
                 <p class="condition">${day.condition}</p>
-                <p class="temps">${day.min_temp} - ${day.max_temp}${unit}</p>
                 <p class="rain">${day.chance_of_rain}%</p>
             </div>
         `;
