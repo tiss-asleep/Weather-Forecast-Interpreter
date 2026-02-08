@@ -43,6 +43,13 @@ def get_gemini_response(weather_data):
     - Current temperature, humidity, wind speed, and condition
     - For each day in the forecast, include the date, min/max temperature, condition, and chance of rain
     - Use natural language and make it easy to understand for a general audience
+
+    Important:
+    - Do not include any technical details or raw data in the summary
+    - Focus on providing a clear and concise overview of the weather conditions
+    - Use a friendly and conversational tone
+    - Do not include markdown formatting or any special characters in the summary
+    - Write in plain text only, without any HTML tags or emojis
     """
 
     try:
