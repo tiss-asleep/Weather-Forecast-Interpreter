@@ -6,7 +6,7 @@
  * and updates the DOM with the results or error messages.
  */
 
-const API_URL = 'http://127.0.0.1:5000/weather';
+const API_URL = '/weather';
 
 // DOM elements
 const CITY = document.getElementById('city');
