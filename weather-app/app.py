@@ -5,13 +5,17 @@ This module defines a Flask web application that provides an API endpoint to fet
 using the Weather API and Gemini API. It handles input validation, error handling, and returns JSON responses to clients.
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from weather_api import get_current, get_forecast
 from gemini_api import get_gemini_response
 from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
+
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 """
 API endpoint to fetch weather data and generate a summary.
