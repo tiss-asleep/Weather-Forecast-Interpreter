@@ -8,3 +8,4 @@ To run the project locally:
   - Install the dependencies using the command "pip install -r requirements.txt"
   - Run the server using "python app.py"
   - Open http://127.0.0.1:5000 in your browser
+  - You can also run the "main.py" file to test it out on your CLI
