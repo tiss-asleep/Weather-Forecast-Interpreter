@@ -104,9 +104,9 @@ def get_forecast(city_name, days, unit):
         result.append({
             "date": day["date"],
             "avg_temp": day_info[f"avgtemp_{unit.lower()}"],
-            "condition": day_info["condition"]["text"],
             "min_temp": day_info[f"mintemp_{unit.lower()}"],
             "max_temp": day_info[f"maxtemp_{unit.lower()}"],
+            "condition": day_info["condition"]["text"],
             "chance_of_rain": day_info.get("daily_chance_of_rain", 0)
         })
 
