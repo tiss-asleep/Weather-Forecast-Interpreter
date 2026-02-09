@@ -39,17 +39,20 @@ def get_gemini_response(weather_data):
     prompt = f"""
     Raw weather data is provided below:
     {weather_data}
-    Using it, write a short, user-friendly summary of it, including:
-    - Current temperature, humidity, wind speed, and condition
-    - For each day in the forecast, include the date, min/max temperature, condition, and chance of rain
-    - Use natural language and make it easy to understand for a general audience
+
+    Using it, write a short, user-friendly insight based on the conditions, including:
+    - How someone should dress
+    - Whether they should bring an umbrella
+    - If conditions are good for outdoor activities
+    - Any safety considerations for extreme heat, cold, wind, or rain
 
     Important:
-    - Do not include any technical details or raw data in the summary
-    - Focus on providing a clear and concise overview of the weather conditions
+    - Do not include technical details or raw data
+    - Focus on clear, simple explanations for a general audience
     - Use a friendly and conversational tone
-    - Do not include markdown formatting or any special characters in the summary
-    - Write in plain text only, without any HTML tags or emojis
+    - Do not use markdown, emojis, HTML tags, or special characters
+    - Write in plain text only
+    - Keep the response concise but helpful
     """
 
     try:
