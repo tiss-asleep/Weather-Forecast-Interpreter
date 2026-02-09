@@ -86,7 +86,7 @@ select {
 /* Sections */
 .current-weather,
 .forecast,
-.ai-summary {
+.ai-response {
     margin-top: 16px;
 }
 

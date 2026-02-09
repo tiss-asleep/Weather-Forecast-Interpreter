@@ -3,7 +3,7 @@
 @author: Jambaldorj Munkhsoyol
 This is the main entry point for the Weather Forecast Interpreter application.
 It prompts the user for input, fetches weather data using the Weather API, generates
-a summary using the Gemini API, and displays the results. The code is structured to
+insights using the Gemini API, and displays the results. The code is structured to
 handle errors gracefully and provide informative messages to the user.
 """
 
@@ -12,8 +12,8 @@ from gemini_api import get_gemini_response
 
 """
 The main function prompts the user for a city name, unit of temperature, and number of days to forecast.
-It validates the input, fetches current weather and forecast data, generates a summary using the Gemini API,
-and prints the summary. If any errors occur during the process, it catches the exceptions and prints an error message.
+It validates the input, fetches current weather and forecast data, generates insights using the Gemini API,
+and prints the insights. If any errors occur during the process, it catches the exceptions and prints an error message.
 """
 def main():
     city = input("Enter city name >> ").strip()

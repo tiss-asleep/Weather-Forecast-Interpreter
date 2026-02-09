@@ -28,9 +28,9 @@ CLIENT = genai.Client(api_key=_get_api_key())
 """
 Generates a user-friendly insight based on raw weather data using the Gemini API.
 @param weather_data: A string containing raw weather data.
-@return: A user-friendly summary of the weather conditions as a string.
+@return: User-friendly insights of the weather conditions as a string.
 @raises ValueError: If the weather_data parameter is empty.
-@raises RuntimeError: If there is an error generating the AI summary.
+@raises RuntimeError: If there is an error generating the AI insights.
 """
 def get_gemini_response(weather_data):
     if not weather_data:
@@ -64,4 +64,4 @@ def get_gemini_response(weather_data):
         )
         return response.text
     except Exception as e:
-        raise RuntimeError(f"Error generating AI summary: {e}")
+        raise RuntimeError(f"Error generating AI insights: {e}")

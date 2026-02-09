@@ -55,10 +55,10 @@ async function getWeather() {
  * Renders the weather data on the page, including current conditions, forecast, and AI summary.
  * @param data The weather data returned from the API, including current conditions, forecast, and AI summary.
  * @param city The name of the city for which the weather data was fetched. 
- * @param unit The unit of measurement for temperature (°C or °F) to display in the results. 
+ * @param unit The unit of measurement for temperature (C or F) to display in the results. 
  */
 function displayWeather(data, city, unit) {
-    const {summary, weather_data} = data;
+    const {response, weather_data} = data;
     const {current, forecast} = weather_data;
     
     let html = `
@@ -82,7 +82,7 @@ function displayWeather(data, city, unit) {
         html += `
             <div class="forecast-day">
                 <p class="date">${formatDate(day.date)}</p>
-                <p class="temps">L:${day.min_temp} H:${day.max_temp}${unit}</p>
+                <p class="temps">H:${day.max_temp} L:${day.min_temp}${unit}</p>
                 <p class="condition">${day.condition}</p>
                 <p class="rain">Rain: ${day.chance_of_rain}%</p>
             </div>
@@ -93,9 +93,9 @@ function displayWeather(data, city, unit) {
                 </div>
             </div>
             
-            <div class="ai-summary">
-                <h3>AI Summary</h3>
-                <p>${summary}</p>
+            <div class="ai-response">
+                <h3>AI Insights</h3>
+                <p>${response}</p>
             </div>
         </div>
     `;
