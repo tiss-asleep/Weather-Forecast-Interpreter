@@ -71,7 +71,6 @@ function displayWeather(data, city, unit) {
                 <p>Feels Like: ${current.feels_like}</p>
                 <p>Condition: ${current.condition}</p>
                 <p>Wind Speed: ${current.wind_kph} km/h</p>
-                <p>Air Quality: ${current.air_quality}</p>
                 <p>Humidity: ${current.humidity}%</p>
             </div>
             

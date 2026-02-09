@@ -59,7 +59,6 @@ def get_current(city_name, unit):
         "feels_like": current[f"feelslike_{unit.lower()}"],
         "condition": current["condition"]["text"],
         "wind_kph": current["wind_kph"],
-        "air_quality": current["air_quality"],
         "humidity": current["humidity"]
     }
 
