@@ -55,10 +55,12 @@ def get_current(city_name, unit):
         raise RuntimeError("No current weather data found")
     
     return {
-        "temperature": current[f"temp_{unit.lower()}"],
-        "humidity": current["humidity"],
+        "temp": current[f"temp_{unit.lower()}"],
+        "feels_like": current[f"feelslike_{unit.lower()}"],
+        "condition": current["condition"]["text"],
         "wind_kph": current["wind_kph"],
-        "condition": current["condition"]["text"]
+        "air_quality": current["air_quality"],
+        "humidity": current["humidity"]
     }
 
 """
@@ -102,10 +104,11 @@ def get_forecast(city_name, days, unit):
 
         result.append({
             "date": day["date"],
+            "avg_temp": day_info[f"avgtemp_{unit.lower()}"],
+            "condition": day_info["condition"]["text"],
             "min_temp": day_info[f"mintemp_{unit.lower()}"],
             "max_temp": day_info[f"maxtemp_{unit.lower()}"],
-            "condition": day_info["condition"]["text"],
-            "chance_of_rain": day_info.get("daily_chance_of_rain", 0)
+            "chance_of_precip": day_info["chance_of_precip"],
         })
 
     return result

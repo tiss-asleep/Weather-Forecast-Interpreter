@@ -67,10 +67,12 @@ function displayWeather(data, city, unit) {
             
             <div class="current-weather">
                 <h3>Current Conditions</h3>
-                <p><strong>Temperature:</strong> ${current.temperature}${unit}</p>
-                <p><strong>Condition:</strong> ${current.condition}</p>
-                <p><strong>Humidity:</strong> ${current.humidity}%</p>
-                <p><strong>Wind Speed:</strong> ${current.wind_kph} km/h</p>
+                <p>Temperature: ${current.temp} ${unit}</p>
+                <p>Feels Like: ${current.feels_like}</p>
+                <p>Condition: ${current.condition}</p>
+                <p>Wind Speed: ${current.wind_kph} km/h</p>
+                <p>Air Quality: ${current.air_quality}</p>
+                <p>Humidity: ${current.humidity}%</p>
             </div>
             
             <div class="forecast">
@@ -81,10 +83,11 @@ function displayWeather(data, city, unit) {
     forecast.forEach(day => {
         html += `
             <div class="forecast-day">
-                <p class="date">${formatDate(day.date)}</p>
-                <p class="temps">H:${day.max_temp} L:${day.min_temp}${unit}</p>
-                <p class="condition">${day.condition}</p>
-                <p class="rain">Rain: ${day.chance_of_rain}%</p>
+                <p>${formatDate(day.date)}</p>
+                <p>Average Temperature: ${day.avg_temp} ${unit}</p>
+                <p>L:${day.min_temp} ${unit} H:${day.max_temp} ${unit}</p>
+                <p>${day.condition}</p>
+                <p>Precipitation: ${day.chance_of_precip}%</p>
             </div>
         `;
     });
