@@ -86,7 +86,7 @@ function displayWeather(data, city, unit) {
                 <p>Average Temperature: ${day.avg_temp} ${unit}</p>
                 <p>L:${day.min_temp} ${unit} H:${day.max_temp} ${unit}</p>
                 <p>${day.condition}</p>
-                <p>Precipitation: ${day.chance_of_precip}%</p>
+                <p>Rain: ${day.chance_of_rain}%</p>
             </div>
         `;
     });
