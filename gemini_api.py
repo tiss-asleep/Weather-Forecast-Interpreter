@@ -1,10 +1,10 @@
 """
 @file: gemini_api.py
 @author: Jambaldorj Munkhsoyol
-This module provides functions to interact with the Gemini API to generate
-user-friendly summaries of weather data. It retrieves the API key from environment
-variables, defines a function to generate summaries based on raw weather data,
-and handles errors gracefully by raising exceptions with informative messages.
+This module provides functionality to interact with the Gemini API to generate
+user-friendly insights based on raw weather data. It retrieves the API key from
+environment variables, constructs a prompt for the AI model, and returns a concise summary
+of weather conditions and recommendations for users.
 """
 
 import os
@@ -40,11 +40,13 @@ def get_gemini_response(weather_data):
     Raw weather data is provided below:
     {weather_data}
 
-    Using it, write a short, user-friendly insight based on the conditions, including:
+    Using it, write a short, user-friendly insight based on the conditions, including things such as:
     - How someone should dress
     - Whether they should bring an umbrella
     - If conditions are good for outdoor activities
     - Any safety considerations for extreme heat, cold, wind, or rain
+
+    Feel free to include any other relevant insights that a user might find helpful based on the weather data.
 
     Important:
     - Do not include technical details or raw data
