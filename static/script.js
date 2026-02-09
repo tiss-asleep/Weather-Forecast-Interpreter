@@ -68,7 +68,7 @@ function displayWeather(data, city, unit) {
             <div class="current-weather">
                 <h3>Current Conditions</h3>
                 <p>Temperature: ${current.temp} ${unit}</p>
-                <p>Feels Like: ${current.feels_like}</p>
+                <p>Feels Like: ${current.feels_like} ${unit}</p>
                 <p>Condition: ${current.condition}</p>
                 <p>Wind Speed: ${current.wind_kph} km/h</p>
                 <p>Humidity: ${current.humidity}%</p>
@@ -83,7 +83,7 @@ function displayWeather(data, city, unit) {
         html += `
             <div class="forecast-day">
                 <p>${formatDate(day.date)}</p>
-                <p>Average Temperature: ${day.avg_temp} ${unit}</p>
+                <p>Average: ${day.avg_temp} ${unit}</p>
                 <p>L:${day.min_temp} ${unit} H:${day.max_temp} ${unit}</p>
                 <p>${day.condition}</p>
                 <p>Rain: ${day.chance_of_rain}%</p>
