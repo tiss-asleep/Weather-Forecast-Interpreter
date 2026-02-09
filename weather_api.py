@@ -1,10 +1,10 @@
 """
 @file: weather_api.py
 @author: Jambaldorj Munkhsoyol
-This module provides functions to interact with the Weather API to fetch
-current weather and forecast data. It retrieves the API key from environment
-variables, defines functions to get current weather and forecast data, and
-handles errors gracefully by raising exceptions with informative messages.
+This module provides functionality to interact with the Weather API to fetch current weather
+conditions and forecasts for a given city. It retrieves the API key from environment variables,
+makes HTTP requests to the Weather API, and returns structured data that can be used by other parts of the application.
+The module includes error handling to manage issues such as invalid input, network errors, and API response errors.
 """
 
 import os
